@@ -14,22 +14,54 @@ Sample configuration.yaml
 
     sensor:
     - platform: teleinfo
-        name: "EDF teleinfo"
-        serial_port: "/dev/ttyAMA0"
-    - platform: template
-        sensors:
-        teleinfo_base:
-            value_template: '{{ (states.sensor.edf_teleinfo.
-                attributes["BASE"] | float / 1000) | round(0) }}'
-            unit_of_measurement: 'kWh'
-            icon_template: mdi:flash
-    - platform: template
-        sensors:
-        teleinfo_iinst1:
-            value_template: '{{ states.sensor.edf_teleinfo.
-                attributes["IINST1"] | int }}'
-            unit_of_measurement: 'A'
-            icon_template: mdi:flash
+      name: "Téléinfo"
+      serial_port: "/dev/ttyUSB0"
+    
+    template:
+      - sensor:
+          - name: "Téléinfo Période tarifaire en cours"
+            unique_id: teleinfo_periode_tarifaire_en_cours
+            state: >-
+              {{ state_attr('sensor.teleinfo', 'PTEC') }}
+      - sensor:
+          - name: "Téléinfo Intensité souscrite"
+            unique_id: teleinfo_intensite_souscite
+            unit_of_measurement: A
+            device_class: current
+            state: >-
+              {{ state_attr('sensor.teleinfo', 'ISOUSC') | int }}
+      - sensor:
+          - name: "Téléinfo Intensité instantanée"
+            unique_id: telteinfo_intensite_instantanee
+            unit_of_measurement: A
+            device_class: current
+            state_class: measurement
+            state: >-
+              {{ state_attr('sensor.teleinfo', 'IINST') | int }}
+      - sensor:
+          - name: "Téléinfo Puissance apparente"
+            unique_id: teleinfo_puissance_apparente
+            unit_of_measurement: VA
+            device_class: apparent_power
+            state_class: measurement
+            state: >-
+              {{ state_attr('sensor.teleinfo', 'PAPP') | int }}
+      - sensor:
+          - name: "Téléinfo Index heures creuses"
+            unique_id: teleinfo_index_heures_creuses
+            unit_of_measurement: kWh
+            device_class: energy
+            state_class: total_increasing
+            state: >-
+              {{ state_attr('sensor.teleinfo', 'HCHC') | int / 1000 }}
+      - sensor:
+          - name: "Téléinfo Index heures pleines"
+            unique_id: teleinfo_index_heures_pleines
+            unit_of_measurement: kWh
+            device_class: energy
+            state_class: total_increasing
+            state: >-
+              {{ state_attr('sensor.teleinfo', 'HCHP') | int / 1000 }}
 
 """
 import logging
@@ -144,7 +176,7 @@ class SerialTeleinfoSensor(SensorEntity):
         return False
 
     @property
-    def device_state_attributes(self):
+    def extra_state_attributes(self):
         """Return the state attributes."""
         self._attributes[ATTR_ATTRIBUTION] = CONF_ATTRIBUTION
         return self._attributes
