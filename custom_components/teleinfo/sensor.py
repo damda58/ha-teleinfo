@@ -62,7 +62,6 @@ Sample configuration.yaml
             state_class: total_increasing
             state: >-
               {{ state_attr('sensor.teleinfo', 'HCHP') | int / 1000 }}
-
 """
 import logging
 
