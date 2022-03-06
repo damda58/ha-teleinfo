@@ -2,11 +2,9 @@
   "domain": "enedis",
   "name": "Teleinfo",
   "version": "0.1",
-  "issue_tracker": "https://github.com/sberthelot/teleinfo-home-assistant/issues",
-  "documentation": "https://raw.githubusercontent.com/sberthelot/teleinfo-home-assistant/main/README.md",
+  "issue_tracker": "https://github.com/jeremiedmns/teleinfo-home-assistant/issues",
+  "documentation": "https://raw.githubusercontent.com/jeremiedmns/teleinfo-home-assistant/main/README.md",
   "dependencies": [],
-  "codeowners": ["@sberthelot"],
-  "requirements": [
-    "pyserial-asyncio >= 0.4, <= 0.6"
-  ]
+  "codeowners": ["@sberthelot", "@jeremiedmns"],
+  "requirements": ["pyserial-asyncio >= 0.4, <= 0.6"]
 }
