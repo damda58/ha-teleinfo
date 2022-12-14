@@ -6,7 +6,7 @@ Needs a serial dongle/interface.
 ## How to install:
 
 ### HACS
-Add this repo (https://github.com/jeremiedmns/ha-teleinfo) to the HACS store and install from there.
+Add this repo (https://github.com/damda58/ha-teleinfo) to the HACS store and install from there.
 
 ### local install
 Put in "custom_components" folder located in hass.io inside the config folder.
