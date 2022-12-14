@@ -2,6 +2,6 @@
     "name": "Teleinfo",
     "domains": ["teleinfo", "sensor", "electricity", "energy", "metering", "sensor"],
     "render_readme": true,
-    "homeassistant": "0.1.0",
+    "homeassistant": "0.1.1",
     "iot_class": ["Assumed State"]
 }
