@@ -1,10 +1,10 @@
 {
   "domain": "teleinfo",
   "name": "Teleinfo",
-  "version": "0.1.0",
-  "issue_tracker": "https://github.com/jeremiedmns/ha-teleinfo/issues",
-  "documentation": "https://raw.githubusercontent.com/jeremiedmns/ha-teleinfo/main/README.md",
+  "version": "0.1.1",
+  "issue_tracker": "https://github.com/damda58/ha-teleinfo/issues",
+  "documentation": "https://raw.githubusercontent.com/damda58/ha-teleinfo/main/README.md",
   "dependencies": [],
-  "codeowners": ["@jeremiedmns"],
+  "codeowners": ["@damda58"],
   "requirements": ["pyserial-asyncio >= 0.4, <= 0.6"]
 }
